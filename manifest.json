@@ -1,0 +1,30 @@
+{
+  "name": "Birdcage",
+  "version": "0.1",
+  "description": "UI Layer to Improve the Birdsite Experience",
+  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "options_page": "options.html",
+  "content_scripts": [
+     {
+	   "matches": ["*://twitter.com/*"],
+	   "css": ["birdcage.css"],
+	   "js": ["jquery-3.3.1.min.js", "contentScript.js"]
+     }
+  ],
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/birdcage-16.png",
+      "32": "images/birdcage-32.png",
+      "48": "images/birdcage-48.png",
+      "128": "images/birdcage-128.png"
+    }
+  },
+  "icons": {
+    "16": "images/birdcage-16.png",
+    "32": "images/birdcage-32.png",
+    "48": "images/birdcage-48.png",
+    "128": "images/birdcage-128.png"
+  },
+  "manifest_version": 2
+}
