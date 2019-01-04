@@ -42,7 +42,6 @@
 		"verboseTab": $("#verboseTab").hasClass("on"), 
 		"collapseWhoToFollow": $("#collapseWhoToFollow").hasClass("on"), 
 		"collapseTrending": $("#collapseTrending").hasClass("on"), 
-		"collapseCWs": $("#collapseCWs").hasClass("on"), 
 		"minifyFeed": $("#minifyFeed").hasClass("on"),
 		"collapseTerms": $("#collapseTerms").val(),
 		"redactTerms": $("#redactTerms").val()}
@@ -58,7 +57,6 @@
 	chrome.storage.sync.get("verboseTab", function(result){if(result.verboseTab == true){$("#verboseTab").addClass("on");}}); 
 	chrome.storage.sync.get("collapseWhoToFollow", function(result){if(result.collapseWhoToFollow == true){$("#collapseWhoToFollow").addClass("on");}}); 
 	chrome.storage.sync.get("collapseTrending", function(result){if(result.collapseTrending == true){$("#collapseTrending").addClass("on");}}); 
-	chrome.storage.sync.get("collapseCWs", function(result){if(result.collapseCWs == true){$("#collapseCWs").addClass("on");}}); 
 	chrome.storage.sync.get("minifyFeed", function(result){if(result.minifyFeed == true){$("#minifyFeed").addClass("on");}}); 
 
 	chrome.storage.sync.get("collapseTerms", function(result){$("#collapseTerms").val(result.collapseTerms);});

@@ -1,5 +1,14 @@
 var streamHeight = 0;
 var newTweetCount = "";
+var notificationCount = 0;
+var dmCount = 0;
+var verboseTabFlag = false;
+var tabOut = "";
+
+chrome.storage.sync.get("verboseTab", function(result){if(result.verboseTab == true){verboseTabFlag = true;}}); 
+chrome.storage.sync.get("tagAds", function(result){if(result.tagAds == true){tagAds();}}); 
+chrome.storage.sync.get("collapseAds", function(result){if(result.collapseAds == true){collapseAds();}}); 
+chrome.storage.sync.get("minifyFeed", function(result){if(result.minifyFeed == true){smolFeed();}}); 
 window.setInterval(pollForUpdate, 500);
 
 function pollForUpdate(){
@@ -22,18 +31,57 @@ function pollForUpdate(){
 		streamHeight = $('.stream-container').height();
 	}
 	
+	if(verboseTabFlag){
+
+		var tabWrite = false;
+		
+		if($("title").text() != tabOut){
+			tabWrite = true;
+		}
+	
+		if($.contains(document.documentElement, $(".people.notifications").find(".new-count").get(0)) && $(".people.notifications").find(".new-count").is(":visible")){
+
+			if($(".people.notifications").find(".count-inner").get(0).innerHTML != notificationCount){
+				notificationCount = $(".people.notifications").find(".count-inner").get(0).innerHTML;
+				tabWrite = true;
+			}
+
+		}else{
+			if(notificationCount != 0){
+				notificationCount = 0;
+				tabWrite = true;
+			}
+		}
+		
+		if($.contains(document.documentElement, $(".dm-nav").find(".dm-new").get(0)) && $(".dm-nav").find(".dm-new").is(":visible")){
+			
+			if($(".dm-nav").find(".count-inner").get(0).innerHTML != dmCount){
+				dmCount = $(".dm-nav").find(".count-inner").get(0).innerHTML;
+				tabWrite = true;
+			}
+			
+		}else{
+			if(dmCount != 0){
+				dmCount = 0;
+				tabWrite = true;
+			}
+		}
+		
+		if(tabWrite){
+			$("title").text("Twitter | 🔔 " + notificationCount + " | ✉ " + dmCount);
+			tabOut = $("title").text();
+		}
+		
+	}
+	
 }
 
 // Retreive settings from chrome.sync and apply timeline style changes
 function styleTimeline(){
 	
-	chrome.storage.sync.get("tagAds", function(result){if(result.tagAds == true){tagAds();}}); 
-	chrome.storage.sync.get("collapseAds", function(result){if(result.collapseAds == true){collapseAds();}}); 
 	chrome.storage.sync.get("collapseWhoToFollow", function(result){if(result.collapseWhoToFollow == true){collapseWhoToFollow();}}); 
 	chrome.storage.sync.get("collapseTrending", function(result){if(result.collapseTrending == true){collapseTrending();}}); 
-	//chrome.storage.sync.get("collapseCWs", function(result){if(result.collapseCWs == true){$("#collapseCWs").addClass("on");}}); 
-	//chrome.storage.sync.get("minifyFeed", function(result){if(result.minifyFeed == true){$("#minifyFeed").addClass("on");}}); 
-
+	
 	//chrome.storage.sync.get("collapseTerms", function(result){$("#collapseTerms").val(result.collapseTerms);});
 	//chrome.storage.sync.get("redactTerms", function(result){$("#redactTerms").val(result.redactTerms);});
 	
@@ -43,45 +91,20 @@ function styleTimeline(){
 function styleTitle(){
 	
 	chrome.storage.sync.get("quietTab", function(result){if(result.quietTab == true){removePendingTitle();}}); 
-	//chrome.storage.sync.get("verboseTab", function(result){if(result.verboseTab == true){$("#verboseTab").addClass("on");}}); 
 	
 }
 
 // Apply custom style to promoted tweets
 function tagAds(){
 	
-	$(".promoted-tweet").css("opacity", "0.2");
-	$(".promoted-tweet").closest("li").css("border-bottom", "1px solid #e6ecf0");
+	$("body").append("<style>.promoted-tweet{opacity: 0.2; border-bottom: 1px solid #657786;}</style>");
 	
 }
 
 // Collapse promoted tweets
 function collapseAds(){
 
-	$(".promoted-tweet").css("height", "55px");
-	$(".promoted-tweet").find(".u-block").css("display", "none");
-	$(".promoted-tweet").find(".AdaptiveMediaOuterContainer").css("display", "none");
-	$(".promoted-tweet").find(".PlayableMedia").css("display", "none");
-	$(".promoted-tweet").find(".stream-item-footer").css("display", "none");
-	$(".promoted-tweet").find(".context").css("display", "none");
-	
-}
-
-// Collapse tweets with CWs and display the CW
-function collapseCWs(){
-	
-	
-}
-
-// Collapse tweets with trigger words and apply content warning
-function collapseTriggers(){
-	
-	
-}
-
-// Replace trigger words with black boxes
-function redactTriggers(){
-	
+	$("body").append("<style>.promoted-tweet{height: 55px;} .promoted-tweet.u-block{display: none;} .promoted-tweet.AdaptiveMediaOuterContainer{display: none;} .promoted-tweet.PlayableMedia{display: none;} .promoted-tweet.stream-item-footer{display: none;} .promoted-tweet.context{display: none;} </style>");
 	
 }
 
@@ -113,35 +136,28 @@ function collapseWhoToFollow(){
 	
 }
 
-// Collapse retweets and apply label
-function collapseRetweets(){
-	
-	
-}
-
-// Apply custom styles to tweets from particular sources
-function applyCustomStyles(){
-	
-	
-}
-
 // Change the window title to remove pending messages alert
 function removePendingTitle(){
 	
 	$("title").text("Twitter");
 }
 
-// Change the window title to add message and notification alerts
-function applyVerboseTitle(){
+// Apply custom stylesheet to collapse timeline
+function smolFeed(){
 	
-	// new-count (new notifications)
-	
-	// global-dm-nav new (new dms)
+	$("body").append("<style>.stream-item:hover {max-height: 1000px; transition: max-height 1s;}.stream-item { max-height: 65px; transition: max-height 1s; filter: drop-shadow(0px -6px 5px white);}.tweet-context { display: none;}.stream-item-footer { display: none;}.QuoteTweet.AdaptiveMedia-badge{z-index: 0;}.QuoteTweet-originalAuthor{z-index: 0;}.conversation-module>li:after{border-style:none;}.conversation-module>li:before{border-style:none;}.mini-avatar-with-thread:before{border-style:none;}.mini-avatar-with-thread:after{border-style:none;}</style>");
 	
 }
 
-// Apply custom stylesheet to collapse timeline
-function tinyFeed(){
+// Collapse tweets with trigger words and apply content warning
+function collapseTriggers(){
+	
+	
+	
+}
+
+// Replace trigger words with black boxes
+function redactTriggers(){
 	
 	
 }

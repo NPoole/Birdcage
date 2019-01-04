@@ -1,0 +1,25 @@
+.stream-item:hover {
+    max-height: 1000px;
+    transition: max-height 1s;
+}
+.stream-item {
+    max-height: 55px;
+    transition: max-height 1s;
+}
+
+.tweet-context {
+    display: none;
+}
+
+.stream-item-footer {
+    display: none;
+}
+
+.QuoteTweet.AdaptiveMedia-badge{
+	z-index: 0;
+}
+
+.QuoteTweet-originalAuthor{
+	z-index: 0;
+}
+
