@@ -4,6 +4,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <script src="jquery-3.3.1.min.js"></script>
     <style>
+	
 	body{
 	
 		margin-top: 50px;
@@ -53,6 +54,31 @@
 		width: 600px;
 		min-height: 600px;
 		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		padding-bottom: 15px;
+	
+	}
+	
+	.setting{
+	
+		font-size: 12pt;
+		font-weight: bold;
+		color: #14171A;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: 10px;
+	
+	}
+	
+	.setting > p{
+	
+		position: relative;
+		top: 5px;
 	
 	}
 	
@@ -78,6 +104,80 @@
 	
 	}
 	
+	.switch{
+	
+		border: solid 2px #657786;
+		border-radius: 11px;
+		margin: -2px;
+		height: 20px;
+		width: 40px;
+		background-color: white;
+		transition: background-color;
+		transition-delay: 0.2s;
+		
+	}
+	
+	.switch.on{
+	
+		border: solid 2px #657786;
+		border-radius: 11px;
+		margin: -2px;
+		height: 20px;
+		width: 40px;
+		background-color: #1DA1F2;
+		transition: background-color;
+		transition-delay: 0.2s;
+	
+	}
+	
+	.switch > .switch-knob{
+	
+		height: 20px;
+		width: 20px;
+		margin: -2px;
+		border: solid 2px #657786;
+		border-radius: 11px;
+		background-color: #E1E8ED;
+		position: relative;
+		transition: left .2s;
+		left: 0px;
+	
+	}
+	
+	.switch.on > .switch-knob{
+	
+		height: 20px;
+		width: 20px;
+		margin: -2px;
+		border: solid 2px #657786;
+		border-radius: 11px;
+		background-color: #E1E8ED;
+		position: relative;
+		transition: left .2s;
+		left: 20px;
+	
+	}	
+	
+	.setting > input[type="text"]{
+	
+		width: 300px;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		border-bottom-color: #657786;
+		border-bottom-width: 2px;
+		font-size: 12pt;
+		font-weight: bold;
+		color: #1DA1F2;
+	
+	}
+	
+	.setting > input[type="text"]:focus{
+	
+		outline: none;
+	
+	}	
+	
     </style>
   </head>
   <body>
@@ -86,7 +186,55 @@
 	<div id="version">verson 0.0.1</div>
 	<div id="content">
 	
+		<div class="setting">
+			<p>Make Promoted Tweets Translucent</p>
+			<div id="tagAds" class="switch"><div class="switch-knob"></div></div>
+		</div>
 	
+		<div class="setting">
+			<p>Collapse Promoted Tweets</p>
+			<div id="collapseAds" class="switch"><div class="switch-knob"></div></div>
+		</div>
+	
+		<div class="setting">
+			<p>Turn Off Tab Alerts</p>
+			<div id="quietTab" class="switch"><div class="switch-knob"></div></div>
+		</div>
+	
+		<div class="setting">
+			<p>Turn On Improved Tab Alerts</p>
+			<div id="verboseTab" class="switch"><div class="switch-knob"></div></div>
+		</div>
+
+		<div class="setting">
+			<p>Collapse "Who To Follow"</p>
+			<div id="collapseWhoToFollow" class="switch"><div class="switch-knob"></div></div>
+		</div>
+
+		<div class="setting">
+			<p>Collapse "Trending"</p>
+			<div id="collapseTrending" class="switch"><div class="switch-knob"></div></div>
+		</div>
+
+		<div class="setting">
+			<p>Minify Twitter Feed</p>
+			<div id="minifyFeed" class="switch"><div class="switch-knob"></div></div>
+		</div>
+		
+		<div class="setting">
+			<p>Collapse Tweets with Content/Trigger Warnings</p>
+			<div id="collapseCWs" class="switch"><div class="switch-knob"></div></div>
+		</div>
+	
+		<div class="setting">
+			<p>Collapse Tweets with the Following Words/Phrases:</p>
+			<input type="text" id="collapseTerms" placeholder="(separate with commas)">
+		</div>
+
+		<div class="setting">
+			<p>Soft Redact the Following Words/Phrases:</p>
+			<input type="text" id="redactTerms" placeholder="(separate with commas)">
+		</div>		
 	
 	</div>
 	
