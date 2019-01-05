@@ -37,6 +37,10 @@ This option does the same thing for the "Trending" widget as the previous option
 
 This option injects an experimental stylesheet to shrink all timeline objects to 60 pixels high, hide all tweet context and reaction controls. Hovering over a tweet will expand it to full height and clicking on it will show the full tweet card just like in the default behavior.
 
+### Apply CW to tweets with the Following Words/Phrases
+
+This feature will search the Twitter timeline any time that new tweets are loaded and mark any tweets containing the specified words or phrases with a content warning. This warning will be formatted as follows: <span style="font-weight: bold; color: #ffde5e;">⚠ CW: trigger word ⚠</span> where "trigger word" is replaced with a list of each specified word or phrase contained within the tweet.
+
 ### Buy Me Coffee
 
 Hey, if you like my little project I wouldn't turn down a buck or two :)
