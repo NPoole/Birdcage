@@ -1,5 +1,4 @@
- 
- loadSettings();
+  loadSettings();
 
  $('#github-button').click(function(){
 	 
