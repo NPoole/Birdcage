@@ -1,6 +1,6 @@
 # Birdcage
 
-[![icon](https://user-images.githubusercontent.com/1609220/50721681-add84180-1080-11e9-9708-171fcf7c1d0c.jpg)]
+![icon](https://user-images.githubusercontent.com/1609220/50721681-add84180-1080-11e9-9708-171fcf7c1d0c.jpg)
 
 A Chrome Extension for taming the Twitter user experience
 
@@ -27,7 +27,7 @@ Twitter's default behavior is to show the number of 'new tweets' within parenthe
 
 This mode doesn't show any 'new tweet' counter in the browser tab, but instead, it shows the count of unread notifications and DMs. 
 
-[![Tab Screenshot](https://user-images.githubusercontent.com/1609220/50721676-9c8f3500-1080-11e9-8b33-5d0c0b36ef25.PNG)]
+![Tab Screenshot](https://user-images.githubusercontent.com/1609220/50721676-9c8f3500-1080-11e9-8b33-5d0c0b36ef25.PNG)
 
 ### Collapse "Who To Follow"
 
@@ -45,7 +45,7 @@ This option injects an experimental stylesheet to shrink all timeline objects to
 
 This feature will search the Twitter timeline any time that new tweets are loaded and mark any tweets containing the specified words or phrases with a content warning. This warning will be formatted as follows: 
 
-[![CW Screenshot](https://user-images.githubusercontent.com/1609220/50721680-aadd5100-1080-11e9-95f7-86894c2ddb41.PNG)]
+![CW Screenshot](https://user-images.githubusercontent.com/1609220/50721680-aadd5100-1080-11e9-95f7-86894c2ddb41.PNG)
 
 where "trigger word" is replaced with a list of each specified word or phrase contained within the tweet.
 
