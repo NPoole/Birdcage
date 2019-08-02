@@ -4,6 +4,9 @@
 
 A Chrome Extension for taming the Twitter user experience
 
+### EOL:
+### Twitter Changed Their Whole Shit Up and Now This Works Even Less Than When It Worked
+
 [Check it Out on the Google App Store](https://chrome.google.com/webstore/detail/birdcage/jonhbfifbpbhmfomacogiemiobdgbdhe)
 (or install it as an [unpacked extension](https://www.mattcutts.com/blog/how-to-install-a-chrome-extension-from-github/))
 
